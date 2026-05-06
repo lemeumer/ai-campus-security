@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: fyp-django-backend
+    runtime: python
+    pythonVersion: 3.9
+    plan: free
+
+    # Build command
+    buildCommand: pip install -r requirements.txt && python manage.py migrate --noinput
+
+    # Start command
+    startCommand: gunicorn fyp_backend.wsgi:application --bind 0.0.0.0:$PORT
+
+    # Environment variables
+    envVars:
+      - key: DEBUG
+        value: "false"
+      - key: ALLOWED_HOSTS
+        value: "*.onrender.com"
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: fyp-database
+          property: database
+      - key: DATABASE_USER
+        fromDatabase:
+          name: fyp-database
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: fyp-database
+          property: password
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: fyp-database
+          property: host
+      - key: DATABASE_PORT
+        value: "5432"
+      - key: FRONTEND_URL
+        value: "https://ai-campus-security.vercel.app"
+      - key: FACE_SERVICE_URL
+        value: "https://lemeumer-fyp-faceapi.hf.space"
+      - key: INTERNAL_SERVICE_TOKEN
+        value: "CHANGE_ME_IN_PRODUCTION"
+      - key: EMAIL_HOST_USER
+        value: "umerjavaid5845@gmail.com"
+      - key: EMAIL_HOST_PASSWORD
+        value: "vxatsadoqjfnozjf"
+      - key: FIREBASE_ENABLED
+        value: "true"
+      - key: FIREBASE_PROJECT_ID
+        value: "fyp-project-bd5b0"

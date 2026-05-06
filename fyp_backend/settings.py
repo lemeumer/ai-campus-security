@@ -77,16 +77,14 @@ TEMPLATES = [
 WSGI_APPLICATION = "fyp_backend.wsgi.application"
 
 # Database - PostgreSQL Configuration
-# In production, use Supabase. Credentials loaded from .env
-import os as _os
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": _os.getenv("DATABASE_NAME", "postgres"),
-        "USER": _os.getenv("DATABASE_USER", "postgres"),
-        "PASSWORD": _os.getenv("DATABASE_PASSWORD", ""),
-        "HOST": _os.getenv("DATABASE_HOST", "localhost"),
-        "PORT": _os.getenv("DATABASE_PORT", "5432"),
+        "NAME": "campus_security_db",
+        "USER": "postgres",
+        "PASSWORD": "12345678",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

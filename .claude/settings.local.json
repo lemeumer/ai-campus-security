@@ -64,7 +64,10 @@
       "Bash(dir \"c:\\\\Users\\\\Hp\\\\Desktop\\\\.vs\\\\FYP folder\\\\frontend\\\\src\")",
       "Bash(dir \"c:\\\\Users\\\\Hp\\\\Desktop\\\\.vs\\\\FYP folder\\\\frontend\\\\src\\\\pages\")",
       "Bash(dir \"c:\\\\Users\\\\Hp\\\\Desktop\\\\.vs\\\\FYP folder\\\\frontend\\\\src\\\\pages\\\\Admin\")",
-      "Bash(dir \"c:\\\\Users\\\\Hp\\\\Desktop\\\\.vs\\\\FYP folder\\\\frontend\\\\src\\\\routes\")"
+      "Bash(dir \"c:\\\\Users\\\\Hp\\\\Desktop\\\\.vs\\\\FYP folder\\\\frontend\\\\src\\\\routes\")",
+      "Bash(git update-ref *)",
+      "Bash(git reflog *)",
+      "Bash(git gc *)"
     ]
   }
 }

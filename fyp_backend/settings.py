@@ -77,14 +77,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "fyp_backend.wsgi.application"
 
 # Database - PostgreSQL Configuration
+# In production, use Supabase. Credentials loaded from .env
+import os as _os
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "campus_security_db",
-        "USER": "postgres",
-        "PASSWORD": "12345678",  # Change this to the password you created in psql
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": _os.getenv("DATABASE_NAME", "postgres"),
+        "USER": _os.getenv("DATABASE_USER", "postgres"),
+        "PASSWORD": _os.getenv("DATABASE_PASSWORD", ""),
+        "HOST": _os.getenv("DATABASE_HOST", "localhost"),
+        "PORT": _os.getenv("DATABASE_PORT", "5432"),
     }
 }
 
@@ -131,6 +133,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8080",
     "http://127.0.0.1:3000",
+    "https://ai-campus-security.vercel.app",  # Production React frontend
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -150,6 +153,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8080",
+    "https://ai-campus-security.vercel.app",  # Production React frontend
 ]
 
 # JWT Configuration

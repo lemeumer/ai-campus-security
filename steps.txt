@@ -1,0 +1,30 @@
+Three terminals, in this order:
+
+Terminal 1 — Django backend (port 8000)
+cd "C:\Users\Hp\Desktop\.vs\FYP folder"
+auth_module\venv1\Scripts\activate
+python -m django runserver 8000 --settings=fyp_backend.settings
+Wait for: Starting development server at http://127.0.0.1:8000/
+
+Terminal 2 — FastAPI face detection service (port 5000)
+cd "C:\Users\Hp\Desktop\.vs\FYP folder\face detection"
+venv\Scripts\activate
+python api_server.py
+Wait for: Uvicorn running on http://0.0.0.0:5000
+First start takes ~10–20s while InsightFace + EasyOCR load their models.
+
+Terminal 3 — React frontend (port 5173)
+cd "C:\Users\Hp\Desktop\.vs\FYP folder\frontend"
+npm run dev
+Wait for: Local: http://localhost:5173/
+
+Open the browser
+http://localhost:5173/ → pick a role tile → sign in.
+
+Your admin login: umerjavaid5845@gmail.com
+
+If anything fails to start, paste the terminal output and I'll diagnose. The two most common failures:
+
+Django says ModuleNotFoundError: No module named 'dotenv' → auth_module\venv1\Scripts\python.exe -m pip install python-dotenv
+FastAPI says ModuleNotFoundError: No module named 'easyocr' → cd "face detection" && venv\Scripts\python.exe -m pip install easyocr
+Both should already be installed from earlier in this session, but if you're on a fresh shell or the venv got reset they'll need re-running.

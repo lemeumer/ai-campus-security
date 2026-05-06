@@ -1,0 +1,81 @@
+# requirements.txt - Python 3.14.0 Compatible Dependencies
+
+# Django Framework (Latest stable version compatible with Python 3.14)
+Django==5.1.5
+djangorestframework==3.15.2
+
+# Database
+psycopg2-binary==2.9.10  # PostgreSQL adapter
+# Alternative: psycopg==3.2.3  # Pure Python implementation if psycopg2 has issues
+
+# Authentication & Security
+PyJWT==2.10.1
+django-cors-headers==4.6.0
+
+# API & Filtering
+django-filter==24.3
+djangorestframework-simplejwt==5.4.0  # Alternative JWT library
+
+# Image Processing (for profile pictures & face recognition)
+Pillow==11.0.0
+
+# Face Recognition - Updated versions
+# Note: face_recognition might need compilation on Python 3.14
+# Using alternative/updated packages
+opencv-python==4.10.0.84
+numpy==2.2.1  # Required for opencv and face processing
+dlib==19.24.6  # Face recognition library (might need cmake to install)
+
+# If dlib installation fails, use these alternatives:
+# deepface==0.0.93  # Alternative face recognition library
+# facenet-pytorch==2.6.0  # Another alternative
+
+# Password Security
+bcrypt==4.2.1
+
+# Utilities
+python-decouple==3.8  # For environment variables
+python-dateutil==2.9.0.post0
+
+# Email
+# Django's built-in email is sufficient, but for advanced features:
+# sendgrid==6.11.0  # SendGrid integration (optional)
+
+# Testing
+pytest==8.3.4
+pytest-django==4.9.0
+pytest-cov==6.0.0  # Coverage reporting
+factory-boy==3.3.1  # Test data factories
+faker==33.1.0  # Generate fake data for testing
+
+# Code Quality
+flake8==7.1.1
+black==24.10.0
+isort==5.13.2  # Import sorting
+
+# Production Server
+gunicorn==23.0.0
+whitenoise==6.8.2  # Static file serving
+uvicorn==0.34.0  # ASGI server (optional, for async support)
+
+# Monitoring & Logging
+sentry-sdk==2.19.2  # Error tracking
+
+# Async Tasks (optional but recommended)
+celery==5.4.0
+redis==5.2.1  # Message broker for Celery
+django-celery-beat==2.7.0  # Periodic tasks
+django-celery-results==2.5.1  # Store task results
+
+# Additional utilities
+python-magic==0.4.27  # File type detection
+validators==0.34.0  # Data validation
+pytz==2024.2  # Timezone support
+
+# Development tools (optional)
+ipython==8.31.0  # Better Python shell
+django-debug-toolbar==4.4.6  # Debug toolbar for development
+django-extensions==3.2.3  # Additional management commands
+
+# API Documentation (optional)
+drf-spectacular==0.28.0  # OpenAPI/Swagger documentation

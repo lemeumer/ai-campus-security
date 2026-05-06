@@ -1,0 +1,15 @@
+insightface==0.8.5
+onnxruntime
+opencv-python
+numpy
+fastapi
+uvicorn[standard]
+python-dotenv
+psycopg2-binary
+pydantic
+pillow
+requests
+tqdm
+# OCR (optional — install one)
+# paddleocr
+# pytesseract

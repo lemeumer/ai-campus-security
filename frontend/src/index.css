@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  * { margin: 0; padding: 0; }
+}
+
+@layer components {
+
+  /* ── Buttons ─────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold transition-all duration-150 select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm hover:bg-blue-700 active:scale-[0.98] shadow-lg shadow-blue-500/25;
+  }
+  .btn-secondary {
+    @apply btn px-5 py-2.5 rounded-xl bg-white text-slate-700 text-sm border border-slate-200 hover:bg-slate-50 active:scale-[0.98] shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn px-4 py-2 rounded-lg text-slate-600 text-sm hover:bg-slate-100 active:scale-[0.98];
+  }
+  .btn-danger {
+    @apply btn px-5 py-2.5 rounded-xl bg-red-600 text-white text-sm hover:bg-red-700 active:scale-[0.98];
+  }
+
+  /* ── Inputs ──────────────────────────────── */
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-400 transition-all duration-150 shadow-sm;
+  }
+  .input-dark {
+    @apply w-full px-4 py-3 rounded-xl bg-white/[0.07] border border-white/10 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-150;
+  }
+
+  /* ── Cards ───────────────────────────────── */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm p-6;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  /* ── Badges ──────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wide;
+  }
+
+  /* ── Tables ──────────────────────────────── */
+  .tbl { @apply w-full text-sm; }
+  .tbl thead tr { @apply border-b border-slate-100; }
+  .tbl th { @apply px-4 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-widest bg-slate-50/80; }
+  .tbl td { @apply px-4 py-3.5 text-slate-700 border-b border-slate-50; }
+  .tbl tbody tr:last-child td { @apply border-0; }
+  .tbl tbody tr { @apply transition-colors hover:bg-blue-50/30; }
+
+  /* ── Layout ──────────────────────────────── */
+  .page-title   { @apply text-2xl font-bold text-slate-900 tracking-tight; }
+  .page-subtitle { @apply text-sm text-slate-500 mt-0.5; }
+  .section-title { @apply text-base font-semibold text-slate-900; }
+
+  /* ── Scrollbar ───────────────────────────── */
+  .scrollbar-hide { scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* ── Glassmorphism ───────────────────────── */
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/15;
+  }
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .bg-mesh {
+    background-image:
+      radial-gradient(at 40% 20%, hsla(220,80%,25%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 0%,   hsla(240,70%,20%,1) 0px, transparent 50%),
+      radial-gradient(at 0%  50%,  hsla(210,90%,15%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%,  hsla(250,60%,20%,1) 0px, transparent 50%),
+      radial-gradient(at 0%  100%, hsla(220,80%,18%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(230,70%,22%,1) 0px, transparent 50%);
+    background-color: #0a1628;
+  }
+}

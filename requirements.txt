@@ -1,6 +1,7 @@
 Django==4.2.0
 djangorestframework==3.14.0
 django-cors-headers==4.3.1
+django-filter==23.5
 psycopg2-binary==2.9.9
 dj-database-url==2.1.0
 python-decouple==3.8
@@ -8,3 +9,4 @@ firebase-admin==6.2.0
 gunicorn==21.2.0
 requests==2.31.0
 Pillow==10.1.0
+python-dotenv==1.0.0

@@ -6,7 +6,7 @@ services:
     plan: free
 
     # Build command
-    buildCommand: pip install -r requirements.txt && python manage.py migrate --noinput
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput
 
     # Start command
     startCommand: gunicorn fyp_backend.wsgi:application --bind 0.0.0.0:$PORT

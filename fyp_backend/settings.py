@@ -16,11 +16,16 @@ except ImportError:
     # python-dotenv not installed — fall back to OS env vars only
     pass
 
-SECRET_KEY = "django-insecure-nr8&bfwgndbxe&(g!tur8tor1%hua5+k_qlb^=je$uj&obels2"
+import os as _os
 
-DEBUG = True
+SECRET_KEY = _os.getenv(
+    "SECRET_KEY",
+    "django-insecure-nr8&bfwgndbxe&(g!tur8tor1%hua5+k_qlb^=je$uj&obels2",
+)
 
-ALLOWED_HOSTS = []
+DEBUG = _os.getenv("DEBUG", "true").lower() == "true"
+
+ALLOWED_HOSTS = [h.strip() for h in _os.getenv("ALLOWED_HOSTS", "").split(",") if h.strip()]
 
 # Application definition
 INSTALLED_APPS = [
@@ -45,6 +50,7 @@ AUTH_USER_MODEL = 'auth_module.User'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -77,14 +83,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "fyp_backend.wsgi.application"
 
 # Database - PostgreSQL Configuration
+# Reads DATABASE_* env vars in production (Render → Supabase) and falls back to
+# the local dev Postgres when they are unset.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "campus_security_db",
-        "USER": "postgres",
-        "PASSWORD": "12345678",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": _os.getenv("DATABASE_NAME", "campus_security_db"),
+        "USER": _os.getenv("DATABASE_USER", "postgres"),
+        "PASSWORD": _os.getenv("DATABASE_PASSWORD", "12345678"),
+        "HOST": _os.getenv("DATABASE_HOST", "localhost"),
+        "PORT": _os.getenv("DATABASE_PORT", "5432"),
     }
 }
 
@@ -162,7 +170,6 @@ JWT_EXPIRATION_DAYS = 7
 # Internal service-to-service auth — used by FastAPI face engine to read
 # the active-enrollments bulk endpoint without a user JWT. In production this
 # should be a long random secret loaded from env vars.
-import os as _os
 INTERNAL_SERVICE_TOKEN = _os.getenv(
     "INTERNAL_SERVICE_TOKEN",
     "dev-internal-token-change-me-in-prod",

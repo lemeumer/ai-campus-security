@@ -15,7 +15,7 @@
 - **Runtime:** Python 3.9
 - **Build Command:** 
   ```
-  pip install -r requirements.txt && python manage.py migrate --noinput
+  pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput
   ```
 - **Start Command:** 
   ```

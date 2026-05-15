@@ -1,7 +1,7 @@
-insightface==0.8.5
+insightface==0.7.3
 onnxruntime
 opencv-python
-numpy
+numpy<2
 fastapi
 uvicorn[standard]
 python-dotenv
@@ -10,6 +10,4 @@ pydantic
 pillow
 requests
 tqdm
-# OCR (optional — install one)
-# paddleocr
-# pytesseract
+easyocr
